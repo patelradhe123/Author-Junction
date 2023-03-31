@@ -1,4 +1,5 @@
 import AuthForm from "@/components/AuthForm";
+import ErrorMessage from "@/components/ErrorMessage";
 import Header from "@/components/Header";
 import InputText from "@/components/InputText";
 import useForm from "@/hooks/useForm";
@@ -22,10 +23,6 @@ interface ErrorState {
   message: string;
 }
 
-// ?    : almost ready
-// !    : not tested perfectly
-// todo : test
-// todo : make as many reusable components (UI, logic) from this as you can for login page
 export default function register() {
   const {
     changeHandler,
@@ -69,13 +66,9 @@ export default function register() {
 
   return (
     <AuthPageLayout>
-      {error.state ? (
-        <span className="absolute bottom-0 left-1/2 z-40 my-4 w-6/12 -translate-x-1/2 animate-pulse rounded bg-red-900/90 p-1 text-center font-mono text-xl font-normal capitalize text-red-300">
-          {error.message}{" "}
-        </span>
-      ) : null}
+      <ErrorMessage error={error} />
       <Head>
-        <title>Register</title>
+        <title>Register user</title>
       </Head>
       <Header>
         <li>
